@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kilima Resort — Iten, Kenya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --warm-white: #faf8f4;
+    --earth: #8b6f4e;
+    --deep-earth: #5c4435;
+    --valley-green: #3d5240;
+    --valley-mist: #6b8a6e;
+    --gold: #c9a96e;
+    --gold-light: #e8d5a8;
+    --charcoal: #2a2420;
+    --text-mid: #6b5d53;
+    --border: rgba(139, 111, 78, 0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 3rem;
+    background: rgba(42, 36, 32, 0.0);
+    backdrop-filter: blur(0px);
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(42, 36, 32, 0.88);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-book-btn {
+    background: var(--gold);
+    color: var(--charcoal) !important;
+    padding: 0.55rem 1.4rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.14em !important;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    height: 100svh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(160deg, rgba(61,82,64,0.55) 0%, rgba(42,36,32,0.75) 100%),
+      url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;
+    transform: scale(1.04);
+    animation: heroZoom 14s ease-out forwards;
+  }
+  @keyframes heroZoom {
+    to { transform: scale(1); }
+  }
+  .hero-content {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+    animation: fadeUp 1.2s 0.3s both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.3);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--charcoal);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,169,110,0.1); }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    animation: bobble 2.4s ease-in-out infinite;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.4);
+  }
+  @keyframes bobble {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ─── SECTION SHELLS ─── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.4rem;
+  }
+  .section-title em { font-style: italic; color: var(--earth); }
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--text-mid);
+    max-width: 58ch;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--charcoal);
+    padding: 2rem;
+  }
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.4rem;
+  }
+  .stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 0 auto;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
+  .about-img-accent {
+    position: absolute;
+    bottom: -1.8rem;
+    right: -1.8rem;
+    width: 55%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 6px solid var(--cream);
+  }
+  .about-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: -1.5rem;
+    background: var(--valley-green);
+    color: #fff;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    width: 110px;
+  }
+  .about-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .about-badge-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+  }
+  .features-list {
+    list-style: none;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+  .features-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+  }
+  .features-list li::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ─── ROOMS ─── */
+  .rooms { background: var(--charcoal); color: #fff; }
+  .rooms .section-title { color: #fff; }
+  .rooms .section-body { color: rgba(255,255,255,0.6); }
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 3.5rem;
+  }
+  .room-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .room-card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .room-card:hover img { transform: scale(1.06); }
+  .room-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(42,36,32,0.92) 0%, rgba(42,36,32,0.1) 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.8rem;
+    transition: background 0.4s;
+  }
+  .room-card:hover .room-overlay {
+    background: linear-gradient(0deg, rgba(42,36,32,0.96) 0%, rgba(42,36,32,0.25) 55%);
+  }
+  .room-type {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .room-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 0.6rem;
+  }
+  .room-detail {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .room-card:hover .room-detail { max-height: 80px; }
+  .room-price {
+    margin-top: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+  }
+  .price-from { font-size: 0.6rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; }
+  .price-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+  }
+  .price-unit { font-size: 0.65rem; color: rgba(255,255,255,0.4); }
+
+  /* ─── EXPERIENCE ─── */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .exp-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+  }
+  .exp-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-icon {
+    width: 44px; height: 44px;
+    background: var(--valley-green);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+  .exp-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+    color: var(--charcoal);
+  }
+  .exp-item p {
+    font-size: 0.84rem;
+    line-height: 1.7;
+    color: var(--text-mid);
+  }
+  .exp-img-stack {
+    position: relative;
+    height: 520px;
+  }
+  .exp-img-main {
+    position: absolute;
+    top: 0; right: 0;
+    width: 80%;
+    height: 70%;
+    object-fit: cover;
+  }
+  .exp-img-secondary {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 60%;
+    height: 52%;
+    object-fit: cover;
+    border: 5px solid var(--cream);
+  }
+  .exp-img-tag {
+    position: absolute;
+    bottom: 48%;
+    right: 0;
+    background: var(--gold);
+    padding: 0.9rem 1.1rem;
+    text-align: center;
+  }
+  .exp-img-tag-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+  .exp-img-tag-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 0.75;
+  }
+
+  /* ─── REVIEWS ─── */
+  .reviews { background: var(--valley-green); }
+  .reviews .section-label { color: var(--gold-light); }
+  .reviews .section-title { color: #fff; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .review-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 2rem;
+    transition: background 0.3s;
+  }
+  .review-card:hover { background: rgba(255,255,255,0.13); }
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 1.4rem;
+  }
+  .review-author {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .review-source {
+    font-size: 0.68rem;
+    color: var(--gold-light);
+    margin-top: 0.2rem;
+  }
+
+  /* ─── LOCATION ─── */
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .location-map {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #d4c9b8;
+    position: relative;
+    overflow: hidden;
+  }
+  .location-map iframe {
+    width: 100%; height: 100%;
+    border: none;
+    filter: sepia(20%) saturate(80%);
+  }
+  .distances {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .distance-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.84rem;
+  }
+  .distance-row:first-child { border-top: 1px solid var(--border); }
+  .distance-place { color: var(--charcoal); }
+  .distance-val { color: var(--earth); font-weight: 500; font-size: 0.78rem; }
+
+  /* ─── BOOKING ─── */
+  #book { background: var(--charcoal); }
+  #book .section-title { color: #fff; }
+  #book .section-label { color: var(--gold); }
+  #book .section-body { color: rgba(255,255,255,0.55); }
+  .booking-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .booking-form {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2.5rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .form-group label {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 0.85rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+  .form-group select option { background: #2a2420; color: #fff; }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--charcoal);
+    border: none;
+    padding: 1.05rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+  .contact-info {
+    padding-top: 1rem;
+  }
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.6rem;
+  }
+  .contact-icon {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 0.85rem;
+  }
+  .contact-item-content {}
+  .contact-item-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.2rem;
+  }
+  .contact-item-val {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+  .contact-item-val a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+  }
+  .contact-item-val a:hover { color: var(--gold); }
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #25d366;
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    transition: background 0.2s;
+  }
+  .whatsapp-btn:hover { background: #1aad52; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1a1410;
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+  .footer-tagline {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 2rem;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 1.5rem;
+  }
+
+  /* ─── GALLERY STRIP ─── */
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 300px 220px;
+    gap: 3px;
+    margin-top: 0.5rem;
+  }
+  .gallery-strip .g1 { grid-row: 1 / 3; }
+  .gallery-strip img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s;
+  }
+  .gallery-strip img:hover { opacity: 0.85; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.4rem; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(30,24,20,0.97);
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 99;
+    }
+    .nav-links.open a { font-size: 1rem; }
+    .hamburger { display: flex; z-index: 101; }
+
+    .stats-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-img-accent { display: none; }
+    .about-badge { left: 0; top: 1rem; }
+    .rooms-grid { grid-template-columns: 1fr; }
+    .room-card img { aspect-ratio: 16/9; }
+    .experience-grid { grid-template-columns: 1fr; }
+    .exp-img-stack { height: 320px; margin-top: 1rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; }
+    .booking-wrapper { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .gallery-strip { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-strip .g1 { grid-row: auto; grid-column: 1 / 3; }
+    section { padding: 4rem 1.4rem; }
+    .hero-scroll { display: none; }
+    .features-list { grid-template-columns: 1fr; }
+  }
+
+  /* ─── FADE-IN ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── SUCCESS MSG ─── */
+  .success-msg {
+    display: none;
+    background: rgba(61,82,64,0.3);
+    border: 1px solid var(--valley-mist);
+    color: #c8e6c9;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Kilima Resort</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#experience">Experiences</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#book" class="nav-book-btn">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Iten · Elgeyo Marakwet · Kenya</p>
+    <h1>Where the <em>Rift Valley</em><br>Meets the Sky</h1>
+    <p class="hero-sub">A highland retreat above the Great Rift Valley · Hiking · Fresh Air · Warm Hospitality</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn-primary">Reserve a Room</a>
+      <a href="#rooms" class="btn-outline">View Rooms</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Guest Rooms</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">9.4</div>
+      <div class="stat-label">Guest Rating</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2400m</div>
+      <div class="stat-label">Altitude</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Front Desk</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-in">
+        <img src="https://images.unsplash.com/photo-1596394723269-b2cbca4e6313?w=700&q=80&auto=format&fit=crop" alt="Kilima Resort exterior" class="about-img">
+        <img src="https://images.unsplash.com/photo-1541086060-ea451e5e8d69?w=400&q=80&auto=format&fit=crop" alt="Rift Valley view" class="about-img-accent">
+        <div class="about-badge">
+          <div class="about-badge-num">★ 9.4</div>
+          <div class="about-badge-label">Excellent Rating</div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A Family Home<br>Above the <em>Valley</em></h2>
+        <p class="section-body">
+          Perched on the edge of the Great Rift Valley escarpment, Kilima Resort is a family-run retreat in Iten — Kenya's celebrated high-altitude training capital. Our hosts Keon and Florence welcome you into a home where incredible food, honest hospitality, and one of East Africa's most breathtaking views come together naturally.
+        </p>
+        <p class="section-body" style="margin-top:1rem;">
+          Whether you're an athlete chasing altitude gains, a traveller seeking silence, or a family wanting to experience highland Kenya, Kilima is your base.
+        </p>
+        <ul class="features-list">
+          <li>Free high-speed WiFi</li>
+          <li>Buffet & gluten-free breakfast</li>
+          <li>Airport transfers available</li>
+          <li>Free secure parking</li>
+          <li>Garden & terrace</li>
+          <li>Kids' club on-site</li>
+          <li>Daily housekeeping</li>
+          <li>Satellite TV in rooms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="container" style="padding: 0 2rem 1rem;">
+  <div class="gallery-strip fade-in">
+    <img class="g1" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80&auto=format&fit=crop" alt="Resort view">
+    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&q=80&auto=format&fit=crop" alt="Room interior">
+    <img src="https://images.unsplash.com/photo-1606402179428-a57976d71fa4?w=400&q=80&auto=format&fit=crop" alt="Breakfast">
+    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=400&q=80&auto=format&fit=crop" alt="Garden">
+    <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400&q=80&auto=format&fit=crop" alt="Valley landscape">
+  </div>
+</div>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="container">
+    <p class="section-label">Accommodation</p>
+    <h2 class="section-title">Your Room<br>Above the <em>Clouds</em></h2>
+    <p class="section-body">Each of our 10 rooms is designed for rest — comfy beds, satellite TV, electric kettles, and private bathrooms with hot showers. Some rooms open onto private sun terraces with valley views that stop you mid-sentence.</p>
+    <div class="rooms-grid fade-in" style="margin-top:3rem;">
+      <div class="room-card">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80&auto=format&fit=crop" alt="Standard Room">
+        <div class="room-overlay">
+          <div class="room-type">Single Occupancy</div>
+          <div class="room-name">Garden Room</div>
+          <div class="room-detail">Peaceful garden-view room with a comfortable single bed, flat-screen TV, electric kettle and private bathroom with hot shower.</div>
+          <div class="room-price">
+            <span class="price-from">from</span>
+            <span class="price-val">KES 2,500</span>
+            <span class="price-unit">/ night</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80&auto=format&fit=crop" alt="Double Room">
+        <div class="room-overlay">
+          <div class="room-type">Double Occupancy</div>
+          <div class="room-name">Valley View Room</div>
+          <div class="room-detail">Wake up to the Great Rift Valley framed in your window. Private sun terrace, satellite TV, kettle and en-suite hot shower bathroom.</div>
+          <div class="room-price">
+            <span class="price-from">from</span>
+            <span class="price-val">KES 4,000</span>
+            <span class="price-unit">/ night</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card">
+        <img src="https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=600&q=80&auto=format&fit=crop" alt="Family Room">
+        <div class="room-overlay">
+          <div class="room-type">Family · Up to 6 Guests</div>
+          <div class="room-name">Family Suite</div>
+          <div class="room-detail">Our most spacious option — six beds, a terrace, large flat-screen TV, electric kettle and a private bathroom. Perfect for families and groups.</div>
+          <div class="room-price">
+            <span class="price-from">from</span>
+            <span class="price-val">KES 9,000</span>
+            <span class="price-unit">/ night</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="#book" class="btn-primary">Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Beyond the Room</p>
+    <h2 class="section-title">Iten's Best<br><em>Experiences</em></h2>
+    <div class="experience-grid">
+      <div class="exp-items fade-in">
+        <div class="exp-item">
+          <div class="exp-icon">🏔</div>
+          <div>
+            <h3>Escarpment Hiking</h3>
+            <p>A dramatic 7 km trail drops 1,150 vertical metres down the escarpment into the Kerio Valley floor. Our hosts know every route — ask for a guide or a hand-drawn map.</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-icon">🚴</div>
+          <div>
+            <h3>Highland Cycling</h3>
+            <p>Ride the same roads as Kenya's elite marathon runners. Rental bikes available; routes range from gentle valley trails to serious climbing circuits.</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-icon">🌅</div>
+          <div>
+            <h3>Sunrise Over the Rift</h3>
+            <p>Step onto your terrace at dawn and watch light flood the Great Rift Valley. Guests consistently call it one of the most beautiful sunrises of their lives.</p>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-icon">🍳</div>
+          <div>
+            <h3>Home-Cooked Meals</h3>
+            <p>Florence's breakfasts — legendary banana bread, fresh fruit, eggs to order — have become a reason in themselves to visit. Dinner on request; all meals are homemade.</p>
+          </div>
+        </div>
+      </div>
+      <div class="exp-img-stack fade-in">
+        <img class="exp-img-main" src="https://images.unsplash.com/photo-1489493585363-d69421e0edd3?w=700&q=80&auto=format&fit=crop" alt="Kerio Valley view">
+        <img class="exp-img-secondary" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80&auto=format&fit=crop" alt="Mountain hiking">
+        <div class="exp-img-tag">
+          <div class="exp-img-tag-num">6km</div>
+          <div class="exp-img-tag-label">to Kessup Falls</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <p class="section-label">What Guests Say</p>
+    <h2 class="section-title">Loved by<br>Every Guest</h2>
+    <div class="reviews-grid fade-in">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The view is outstanding — you are right at the top of the mountain. You can see a lovely sunrise coming to your door. Everything was done to perfection."</p>
+        <div class="review-author">Verified Guest</div>
+        <div class="review-source">via Booking.com</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Incredible setting and hosts. The food is delicious and it's such a peaceful setting. Feels like home. I can't recommend Kilima enough."</p>
+        <div class="review-author">Verified Guest</div>
+        <div class="review-source">via Booking.com</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"A 7 km route down the escarpment to Kerio Valley — dropping 1,150 vertical metres. The hosts explain the way perfectly. Meals are tasty and the night sky is incredible."</p>
+        <div class="review-author">Verified Guest</div>
+        <div class="review-source">via TripAdvisor</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <p style="font-size:1.2rem; color:rgba(255,255,255,0.4); font-family:'Cormorant Garamond',serif; font-style:italic;">Rated 9.4 / 10 — Excellent</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="container">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title">Perched Above<br><em>Iten Town</em></h2>
+    <div class="location-grid fade-in">
+      <div>
+        <p class="section-body">We sit on the Singore ridge overlooking Iten — minutes from town, worlds away from the noise. Eldoret Airport is 53 km away and airport transfers are available on request.</p>
+        <div class="distances">
+          <div class="distance-row">
+            <span class="distance-place">Iten Resting Garden</span>
+            <span class="distance-val">1 min drive</span>
+          </div>
+          <div class="distance-row">
+            <span class="distance-place">Rimoni Game Reserve</span>
+            <span class="distance-val">6 min drive</span>
+          </div>
+          <div class="distance-row">
+            <span class="distance-place">Kessup Falls</span>
+            <span class="distance-val">6 km away</span>
+          </div>
+          <div class="distance-row">
+            <span class="distance-place">High Altitude Training Centre</span>
+            <span class="distance-val">10 min drive</span>
+          </div>
+          <div class="distance-row">
+            <span class="distance-place">Eldoret Airport</span>
+            <span class="distance-val">53 km</span>
+          </div>
+          <div class="distance-row">
+            <span class="distance-place">Eldoret City Centre</span>
+            <span class="distance-val">35 km</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="location-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.4096!2d35.5076!3d0.6706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x178114a2d8e20e75%3A0x2d0f84b6e2af4abc!2sIten%2C%20Kenya!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <p style="font-size:0.78rem; color:var(--text-mid); margin-top:0.8rem;">P.O. Box 153, Singore, 30700 Iten, Elgeyo-Marakwet County, Kenya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+  <div class="container">
+    <p class="section-label">Reservations</p>
+    <h2 class="section-title">Reserve Your<br><em>Stay</em></h2>
+    <p class="section-body">Fill the form and we'll confirm your reservation within 24 hours. Or reach us directly via phone or WhatsApp for immediate assistance.</p>
+    <div class="booking-wrapper">
+      <div class="booking-form fade-in">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" id="fname">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Doe" id="lname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com" id="email">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+254 7XX XXX XXX" id="phone">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Check-in Date</label>
+            <input type="date" id="checkin">
+          </div>
+          <div class="form-group">
+            <label>Check-out Date</label>
+            <input type="date" id="checkout">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Room Type</label>
+            <select id="roomtype">
+              <option value="">Select room</option>
+              <option>Garden Room (Single)</option>
+              <option>Valley View Room (Double)</option>
+              <option>Family Suite (up to 6)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Guests</label>
+            <select id="guests">
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+              <option>5–6 Guests</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Special Requests (optional)</label>
+          <textarea placeholder="Airport transfer, dietary needs, activities..." id="notes"></textarea>
+        </div>
+        <button class="form-submit" onclick="submitBooking()">Send Reservation Request</button>
+        <div class="success-msg" id="successMsg">
+          ✓ Request received! We'll confirm within 24 hours.
+        </div>
+      </div>
+      <div class="contact-info fade-in">
+        <h3>Prefer to Reach Us Directly?</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-val">P.O. Box 153, Singore<br>Iten, 30700<br>Elgeyo-Marakwet, Kenya</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val"><a href="tel:+254700000000">+254 700 000 000</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val"><a href="mailto:info@kilimaresort.co.ke">info@kilimaresort.co.ke</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-item-content">
+            <div class="contact-item-label">Check-in / Check-out</div>
+            <div class="contact-item-val">Check-in: 12:00 – 22:00<br>Check-out: by 11:00 AM</div>
+          </div>
+        </div>
+        <a href="https://wa.me/254700000000?text=Hello%2C%20I'd%20like%20to%20book%20a%20room%20at%20Kilima%20Resort" class="whatsapp-btn" target="_blank">
+          <span>💬</span> WhatsApp Us
+        </a>
+        <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:0.78rem; color:rgba(255,255,255,0.4); line-height:1.7;">We also accept reservations via Booking.com and Airbnb. Airport transfers from Eldoret Airport can be arranged in advance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kilima Resort</div>
+  <div class="footer-tagline">Iten · Elgeyo Marakwet · Kenya</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#experience">Experiences</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#location">Location</a>
+    <a href="#book">Book</a>
+  </div>
+  <div class="footer-copy">© 2026 Kilima Resort · All rights reserved · P.O. Box 153, Iten, Kenya</div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Set min dates for booking
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+  document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+  });
+
+  // Booking form submit
+  function submitBooking() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const roomtype = document.getElementById('roomtype').value;
+
+    if (!fname || !email || !checkin || !checkout || !roomtype) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    document.getElementById('successMsg').style.display = 'block';
+    document.querySelector('.form-submit').textContent = 'Request Sent ✓';
+    document.querySelector('.form-submit').style.background = '#3d5240';
+    document.querySelector('.form-submit').style.color = '#fff';
+  }
+</script>
+</body>
+</html>
